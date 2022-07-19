@@ -3,13 +3,13 @@ import styled from "@emotion/styled";
 
 export const Toggle = ({ ...props }) => {
   return (
-    <ToggleButton {...props}>
+    <ToggleButton onClick={() => console.log("yehuda")} {...props}>
       <ToggleKnob />
     </ToggleButton>
   );
 };
 
-export const ToggleButton = styled.button`
+const ToggleButton = styled.button`
   position: relative;
   background: var(--main-accent-color);
   height: 18px;
@@ -17,8 +17,9 @@ export const ToggleButton = styled.button`
   border-radius: 50px;
   border: solid var(--main-accent-color) 1px;
   margin: auto;
+  pointer: hand;
 `;
-export const ToggleKnob = styled.span`
+const ToggleKnob = styled.span`
   height: 14px;
   width: 14px;
   bottom: 1px;

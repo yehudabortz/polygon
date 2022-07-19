@@ -1,27 +1,33 @@
 import styled from "@emotion/styled";
 
 import { Toggle } from "./components/buttons/Toggle";
-import { useMemo, useState, useEffect } from "react";
+import { createContext, useMemo, useState, useEffect } from "react";
 import { StandardGridWrap } from "./components/wrappers/index";
 import { NavBar } from "./components/navigation/NavBar";
 import "./App.scss";
 import { Home } from "./pages/Home/index.jsx";
+export const ToggleContext = createContext();
 function App() {
+  const [showRenderCount, setShowRenderCount] = useState(true);
+  const handleToggle = () => {
+    setShowRenderCount((prev) => !prev);
+  };
   return (
-    <>
-      <NavBar />
-      <AppWrap className="App">
-        <SubNavWrap>
-          <PageTitle>Top Performing Stocks</PageTitle>
-          <StandardGridWrap className="grid-column">
-            <ToggleLabel>Show Ticker Render Counts</ToggleLabel>
-            <Toggle />
-          </StandardGridWrap>
-        </SubNavWrap>
-
-        <Home />
-      </AppWrap>
-    </>
+    <ToggleContext.Provider value={showRenderCount}>
+      <>
+        <NavBar />
+        <AppWrap className="App">
+          <SubNavWrap>
+            <PageTitle>Top Performing Stocks</PageTitle>
+            <StandardGridWrap className="grid-column">
+              <ToggleLabel>Show Ticker Render Counts</ToggleLabel>
+              <Toggle onClick={handleToggle} />
+            </StandardGridWrap>
+          </SubNavWrap>
+          <Home />
+        </AppWrap>
+      </>
+    </ToggleContext.Provider>
   );
 }
 

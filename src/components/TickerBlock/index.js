@@ -1,15 +1,25 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useState,
+  memo,
+  useContext,
+} from "react";
 import { StandardColumnGridWrapper, FlexWithGap } from "../wrappers/index";
 import styled from "@emotion/styled";
-import { memo } from "react";
+import { ToggleContext } from "../../App";
 export const TickerBlock = memo(({ ticker, price, ...props }) => {
   const [renderCount, setRenderCount] = useState(1);
 
   // useEffect creates delay on rendering the renderCount because it paints the page before updating state.
+
   useLayoutEffect(() => {
     // price change triggers re-render of component
     setRenderCount((prev) => prev + 1);
   }, [price]);
+
+  const Toggled = useContext(ToggleContext);
+
   return (
     <>
       <TickerBlockWrap {...props}>
@@ -22,25 +32,41 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
             </span>
           </FlexWithGap>
         </StandardColumnGridWrapper>
-        <p>{renderCount}</p>
+        {Toggled ? (
+          <RenderCountDisplay>Rendered x {renderCount}</RenderCountDisplay>
+        ) : (
+          <></>
+        )}
       </TickerBlockWrap>
     </>
   );
 });
 
-export const TickerBlockWrap = styled.div`
+const TickerBlockWrap = styled.div`
   border: solid var(--main-accent-color) 1px;
   border-radius: var(--main-border-radius);
   padding: var(--main-padding);
+  position: relative;
 `;
-export const StockPrice = styled.span`
+const StockPrice = styled.span`
   font-weight: 900;
   font-size: 18px;
 `;
-export const Ticker = styled.span`
+const Ticker = styled.span`
   font-size: 14px;
   font-weight: 800;
 `;
-export const Currency = styled.span`
+const Currency = styled.span`
   font-size: 12px;
+`;
+const RenderCountDisplay = styled.span`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: var(--main-accent-color);
+  padding: calc(var(--main-padding) / 4);
+  font-size: 10px;
+  color: var(--secondary-text-color);
+  border-radius: var(--main-border-radius) 0 calc(var(--main-border-radius) / 2)
+    0;
 `;

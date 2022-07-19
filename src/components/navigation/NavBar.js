@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { ToggleContext } from "../../App";
 
 import { StandardColumnGridWrapper } from "../wrappers/index";
 
@@ -6,8 +7,13 @@ import { PrimaryButton, SecondaryButton } from "../buttons/index";
 import { ReactComponent as PolygonLogo } from "../../assets/polygon-logo.svg";
 
 import styled from "@emotion/styled";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 export const NavBar = () => {
+  const Toggled = useContext(ToggleContext);
+  useEffect(() => {
+    console.log(Toggled);
+  }, [Toggled]);
   return (
     <Nav>
       <NavContentWrap>
