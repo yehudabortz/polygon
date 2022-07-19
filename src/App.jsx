@@ -22,8 +22,8 @@ export const App = () => {
             <StandardGridWrap className="grid-column">
               <ToggleLabel>
                 {showRenderCount
-                  ? "Ticker Component Render Count On"
-                  : "Ticker Component Render Count Off"}
+                  ? "Ticker Component Render Count: ON"
+                  : "Ticker Component Render Count OFF"}
               </ToggleLabel>
               <Toggle onClick={handleToggle} toggled={showRenderCount} />
             </StandardGridWrap>
