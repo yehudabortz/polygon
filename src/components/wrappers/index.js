@@ -1,0 +1,13 @@
+import styled from "@emotion/styled";
+export const StandardColumnGridWrapper = styled.div`
+  display: grid;
+
+  grid-auto-flow: column;
+  gap: var(--main-grid-gap);
+  &&.half-gap {
+    gap: calc(var(--main-grid-gap) / 2);
+  }
+  &&.third-gap {
+    gap: calc(var(--main-grid-gap) / 3);
+  }
+`;
