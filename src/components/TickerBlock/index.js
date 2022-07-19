@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { StandardColumnGridWrapper, FlexWithGap } from "../wrappers/index";
 import styled from "@emotion/styled";
+import { memo } from "react";
+export const TickerBlock = memo(({ ticker, price, ...props }) => {
+  const [renderCount, setRenderCount] = useState(1);
 
-export const TickerBlock = ({ ticker }) => {
+  // useEffect creates delay on rendering the renderCount because it paints the page before updating state.
+  useLayoutEffect(() => {
+    // price change triggers re-render of component
+    setRenderCount((prev) => prev + 1);
+  }, [price]);
   return (
-    <TickerBlockWrap>
-      <StandardColumnGridWrapper className="half-gap">
-        <FlexWithGap>
-          <Ticker>{ticker.toUpperCase()}</Ticker>
-          <span>
-            <StockPrice>{"298.70"}</StockPrice>
-            <Currency> USD</Currency>
-          </span>
-        </FlexWithGap>
-      </StandardColumnGridWrapper>
-    </TickerBlockWrap>
+    <>
+      <TickerBlockWrap {...props}>
+        <StandardColumnGridWrapper className="half-gap">
+          <FlexWithGap>
+            <Ticker>{ticker.toUpperCase()}</Ticker>
+            <span>
+              <StockPrice>{price}</StockPrice>
+              <Currency> USD</Currency>
+            </span>
+          </FlexWithGap>
+        </StandardColumnGridWrapper>
+        <p>{renderCount}</p>
+      </TickerBlockWrap>
+    </>
   );
-};
+});
 
 export const TickerBlockWrap = styled.div`
   border: solid var(--main-accent-color) 1px;

@@ -1,20 +1,20 @@
 import React from "react";
 import { StandardColumnGridWrapper } from "../../components/wrappers/index";
+
 import { TickerBlock } from "../../components/TickerBlock/index";
 import styled from "@emotion/styled";
-
-const stockData = require("../../data.json");
+import { useStockData } from "./useStockData";
 
 export const Home = () => {
-  console.log(stockData);
+  const stockData = useStockData();
   return (
     <PageWrap>
       <TickerGrid>
-        {stockData.map((s) => {
-          return <TickerBlock ticker={s["T"]} />;
+        {/* {stockData.map((s) => { */}
+        {stockData.slice(0, 20).map((s) => {
+          return <TickerBlock ticker={s["T"]} price={s["o"]} key={s["T"]} />;
         })}
       </TickerGrid>
-      This is the content
     </PageWrap>
   );
 };
