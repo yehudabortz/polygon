@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import { Toggle } from "./components/buttons/Toggle";
-import { createContext, memo, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { StandardGridWrap } from "./components/wrappers/index";
 import { NavBar } from "./components/navigation/NavBar";
 import "./App.scss";
