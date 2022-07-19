@@ -8,6 +8,7 @@ function App() {
     <>
       <NavBar />
       <AppWrap className="App">
+        <PageTitle>Top Performing Stocks</PageTitle>
         <Home />
       </AppWrap>
     </>
@@ -16,6 +17,10 @@ function App() {
 
 export default App;
 
+export const PageTitle = styled.h1`
+  margin-top: calc(var(--main-padding) * 2);
+  margin-bottom: var(--main-padding);
+`;
 export const AppWrap = styled.div`
   background: var(--main-bg-color);
   min-height: 100vh;
