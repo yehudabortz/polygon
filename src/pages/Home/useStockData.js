@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 const stockData = require("../../data.json");
 
 export const useStockData = () => {

@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
+
+import { Toggle } from "./components/buttons/Toggle";
 import { useMemo, useState, useEffect } from "react";
+import { StandardGridWrap } from "./components/wrappers/index";
 import { NavBar } from "./components/navigation/NavBar";
 import "./App.scss";
 import { Home } from "./pages/Home/index.jsx";
@@ -8,7 +11,14 @@ function App() {
     <>
       <NavBar />
       <AppWrap className="App">
-        <PageTitle>Top Performing Stocks</PageTitle>
+        <SubNavWrap>
+          <PageTitle>Top Performing Stocks</PageTitle>
+          <StandardGridWrap className="grid-column">
+            <ToggleLabel>Show Ticker Render Counts</ToggleLabel>
+            <Toggle />
+          </StandardGridWrap>
+        </SubNavWrap>
+
         <Home />
       </AppWrap>
     </>
@@ -17,14 +27,25 @@ function App() {
 
 export default App;
 
-export const PageTitle = styled.h1`
-  margin-top: calc(var(--main-padding) * 2);
-  margin-bottom: var(--main-padding);
+const PageTitle = styled.h1`
+  width: 100%;
 `;
-export const AppWrap = styled.div`
+const AppWrap = styled.div`
   background: var(--main-bg-color);
   min-height: 100vh;
   position: relative;
   width: var(--container-width);
+  margin: auto;
+`;
+const SubNavWrap = styled.div`
+  display: flex;
+  gap: var(--main-grid-gap);
+  margin-top: calc(var(--main-padding) * 2);
+  margin-bottom: var(--main-padding);
+`;
+const ToggleLabel = styled.span`
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--muted-text-color);
   margin: auto;
 `;

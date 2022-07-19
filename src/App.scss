@@ -2,6 +2,7 @@
 :root {
   --main-text-color: #0a0a0a;
   --secondary-text-color: #fff;
+  --muted-text-color: #6b6b6b;
   --main-bg-color: #fafafa;
   --main-border-color: #cdcccc;
   --main-accent-color: #5f5cff;
@@ -23,4 +24,25 @@
 }
 body {
   background: var(--main-bg-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+button {
+  margin: none;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  width: max-content;
+}
+
+.grid-column {
+  grid-auto-flow: column;
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { StandardColumnGridWrapper } from "../../components/wrappers/index";
 
 import { TickerBlock } from "../../components/TickerBlock/index";
@@ -7,11 +8,38 @@ import { useStockData } from "./useStockData";
 
 export const Home = () => {
   const stockData = useStockData();
+
+  const [page, setPage] = useState(1);
+  const [resultsCountOffset, setResultsCountOffset] = useState(0);
+
+  useLayoutEffect(() => {
+    setResultsCountOffset(40);
+  }, []);
+
+  // Below, useEffect will paint other components and initial state of the page before resultsCountOffset is set,
+  // to simulate this, try setting the default state to 2 and then update it to 5000 in the useEffect.
+  // useEffect(() => {
+  //   setResultsCountOffset(5000);
+  // }, []);
+  const loadMoreStocks = (e) => {
+    const scrollTop = Math.floor(e?.target?.documentElement?.scrollTop);
+    const scrollHeight = e?.target?.documentElement?.scrollHeight;
+    const innerHeight = window.innerHeight;
+
+    if (scrollTop + innerHeight === scrollHeight) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", loadMoreStocks);
+    // return window.removeEventListener("scroll", loadMoreStocks);
+  }, []);
+
   return (
     <PageWrap>
       <TickerGrid>
-        {/* {stockData.map((s) => { */}
-        {stockData.slice(0, 20).map((s) => {
+        {stockData.slice(0, page * resultsCountOffset).map((s) => {
           return <TickerBlock ticker={s["T"]} price={s["o"]} key={s["T"]} />;
         })}
       </TickerGrid>

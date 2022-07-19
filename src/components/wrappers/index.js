@@ -1,4 +1,9 @@
 import styled from "@emotion/styled";
+export const StandardGridWrap = styled.div`
+  display: grid;
+  gap: var(--main-grid-gap);
+  width: max-content;
+`;
 export const StandardColumnGridWrapper = styled.div`
   display: grid;
 
