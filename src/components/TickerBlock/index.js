@@ -50,10 +50,11 @@ const TickerBlockWrap = styled.div`
 `;
 const StockPrice = styled.span`
   font-weight: 900;
+
   font-size: 18px;
 `;
 const Ticker = styled.span`
-  font-size: 14px;
+  font-size: 22px;
   font-weight: 800;
 `;
 const Currency = styled.span`
