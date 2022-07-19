@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
 import { Toggle } from "./components/buttons/Toggle";
-import { createContext, useMemo, useState, useEffect } from "react";
+import { createContext, memo, useState, useEffect } from "react";
 import { StandardGridWrap } from "./components/wrappers/index";
 import { NavBar } from "./components/navigation/NavBar";
 import "./App.scss";
 import { Home } from "./pages/Home/index.jsx";
 export const ToggleContext = createContext();
-function App() {
+export const App = () => {
   const [showRenderCount, setShowRenderCount] = useState(true);
   const handleToggle = () => {
     setShowRenderCount((prev) => !prev);
@@ -29,9 +29,7 @@ function App() {
       </>
     </ToggleContext.Provider>
   );
-}
-
-export default App;
+};
 
 const PageTitle = styled.h1`
   width: 100%;
