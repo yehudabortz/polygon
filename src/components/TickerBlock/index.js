@@ -26,11 +26,12 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
             </span>
           </FlexWithGap>
         </StandardColumnGridWrapper>
-        {Toggled ? (
-          <RenderCountDisplay>Rendered x {renderCount}</RenderCountDisplay>
-        ) : (
-          <></>
-        )}
+
+        <RenderCountDisplay
+          className={Toggled ? "show-render-count" : "hide-render-count"}
+        >
+          Rendered x {renderCount}
+        </RenderCountDisplay>
       </TickerBlockWrap>
     </>
   );
@@ -43,8 +44,7 @@ const TickerBlockWrap = styled.div`
   position: relative;
 `;
 const StockPrice = styled.span`
-  font-weight: 900;
-
+  font-weight: 500;
   font-size: 18px;
 `;
 const Ticker = styled.span`
@@ -52,16 +52,39 @@ const Ticker = styled.span`
   font-weight: 800;
 `;
 const Currency = styled.span`
+  font-weight: 500;
   font-size: 12px;
+  color: var(--muted-text-color);
 `;
 const RenderCountDisplay = styled.span`
   position: absolute;
   right: 0;
   bottom: 0;
-  background: var(--main-accent-color);
   padding: calc(var(--main-padding) / 4);
   font-size: 10px;
   color: var(--secondary-text-color);
-  border-radius: var(--main-border-radius) 0 calc(var(--main-border-radius) / 2)
-    0;
+  border-radius: var(--main-border-radius) 0 calc(var(--main-border-radius) / 2);
+  background: var(--main-accent-color);
+  &&.show-render-count {
+    animation: show-render-count var(--main-render-time) ease-in-out forwards;
+  }
+  &&.hide-render-count {
+    animation: hide-render-count var(--main-render-time) ease-in-out forwards;
+  }
+  @keyframes show-render-count {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes hide-render-count {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 `;

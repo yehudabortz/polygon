@@ -15,6 +15,7 @@
   --container-width: 1350px;
   --opaque-shadow: rgba(0, 0, 0, 0.315);
   --main-box-shadow: 5px 5px 20px var(--opaque-shadow);
+  --main-render-time: 300ms;
 }
 *:focus-visible {
   outline-offset: 0.25rem;

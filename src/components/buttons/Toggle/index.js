@@ -19,11 +19,11 @@ const ToggleButton = styled.button`
   margin: auto;
   pointer: hand;
   &&.toggle-on {
-    transition: background 300ms;
+    transition: background var(--main-render-time);
     background: var(--main-accent-color);
   }
   &&.toggle-off {
-    transition: background 300ms;
+    transition: background var(--main-render-time);
     background: var(--muted-main-accent-color);
   }
 `;
@@ -37,10 +37,10 @@ const ToggleKnob = styled.span`
   position: absolute;
   border-radius: 50px;
   &&.toggle-on {
-    animation: toggle-on 300ms ease-in-out forwards;
+    animation: toggle-on var(--main-render-time) ease-in-out forwards;
   }
   &&.toggle-off {
-    animation: toggle-off 300ms ease-in-out forwards;
+    animation: toggle-off var(--main-render-time) ease-in-out forwards;
 
   @keyframes toggle-on {
     0% {
