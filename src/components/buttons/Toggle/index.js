@@ -10,6 +10,7 @@ export const Toggle = ({ toggled = false, ...props }) => {
 };
 
 const ToggleButton = styled.button`
+  cursor: pointer;
   position: relative;
   height: 18px;
   width: 32px;
