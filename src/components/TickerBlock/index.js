@@ -3,7 +3,7 @@ import { StandardColumnGridWrapper, FlexWithGap } from "../wrappers/index";
 import styled from "@emotion/styled";
 import { ToggleContext } from "../../App";
 export const TickerBlock = memo(({ ticker, price, ...props }) => {
-  const [renderCount, setRenderCount] = useState(1);
+  const [renderCount, setRenderCount] = useState(0);
 
   // useEffect creates delay on rendering the renderCount because it paints the page before updating state.
 

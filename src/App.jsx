@@ -21,7 +21,7 @@ export const App = () => {
             <PageTitle>Top Performing Stocks</PageTitle>
             <StandardGridWrap className="grid-column">
               <ToggleLabel>Show Ticker Render Counts</ToggleLabel>
-              <Toggle onClick={handleToggle} />
+              <Toggle onClick={handleToggle} toggled={showRenderCount} />
             </StandardGridWrap>
           </SubNavWrap>
           <Home />
