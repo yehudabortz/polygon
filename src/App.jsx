@@ -23,7 +23,10 @@ export const App = () => {
             <ToggleLabel>
               {showRenderCount ? `${toggleLabel} ON` : `${toggleLabel} OFF`}
             </ToggleLabel>
-            <Toggle onClick={handleToggle} toggled={showRenderCount} />
+            <Toggle
+              onClick={handleToggle}
+              renderCountToggled={showRenderCount}
+            />
           </StandardGridWrap>
         </SubNavWrap>
         <Home />

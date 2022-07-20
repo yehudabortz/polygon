@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-export const Toggle = ({ toggled = false, ...props }) => {
+export const Toggle = ({ renderCountToggled = false, ...props }) => {
   return (
-    <ToggleButton {...props} className={!!toggled ? "toggle-on" : "toggle-off"}>
-      <ToggleKnob className={!!toggled ? "toggle-on" : "toggle-off"} />
+    <ToggleButton
+      {...props}
+      className={!!renderCountToggled ? "toggle-on" : "toggle-off"}
+    >
+      <ToggleKnob
+        className={!!renderCountToggled ? "toggle-on" : "toggle-off"}
+      />
     </ToggleButton>
   );
 };
