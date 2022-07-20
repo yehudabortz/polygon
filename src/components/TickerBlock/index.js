@@ -1,5 +1,6 @@
 import React, {
   useRef,
+  useCallback,
   useLayoutEffect,
   useState,
   memo,
@@ -27,7 +28,6 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
           </FlexWithGap>
         </StandardColumnGridWrapper>
         <RenderCountDisplay
-          // Line 42 Render count is still higher than desired though!
           className={Toggled ? "show-render-count" : "hide-render-count"}
         >
           Rendered x {renders.current++}
