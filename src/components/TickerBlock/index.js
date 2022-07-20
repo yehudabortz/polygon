@@ -13,7 +13,7 @@ import { ToggleContext } from "../../App";
 export const TickerBlock = memo(({ ticker, price, ...props }) => {
   const Toggled = useContext(ToggleContext);
 
-  const renders = useRef(0);
+  const renders = useRef(1);
 
   return (
     <>
