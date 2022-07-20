@@ -5,11 +5,9 @@ export const Toggle = ({ renderCountToggled = false, ...props }) => {
   return (
     <ToggleButton
       {...props}
-      className={!!renderCountToggled ? "toggle-on" : "toggle-off"}
+      className={renderCountToggled ? "toggle-on" : "toggle-off"}
     >
-      <ToggleKnob
-        className={!!renderCountToggled ? "toggle-on" : "toggle-off"}
-      />
+      <ToggleKnob className={renderCountToggled ? "toggle-on" : "toggle-off"} />
     </ToggleButton>
   );
 };
