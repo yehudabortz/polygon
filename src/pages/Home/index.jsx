@@ -33,14 +33,20 @@ export const Home = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", loadMoreStocks);
+    // come back to this!
     // return window.removeEventListener("scroll", loadMoreStocks);
   }, []);
 
+  // Line 44-46 manages our mock infinite scroll, and returns the desired amount of components from our stockData array
   return (
     <PageWrap>
       <TickerGrid>
         {stockData.slice(0, page * resultsCountOffset).map((s) => {
-          return <TickerBlock ticker={s["T"]} price={s["o"]} key={s["T"]} />;
+          const price = s["o"];
+          const ticker = s["T"];
+          if (price && ticker) {
+            return <TickerBlock ticker={ticker} price={price} key={ticker} />;
+          }
         })}
       </TickerGrid>
     </PageWrap>
