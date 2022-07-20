@@ -1,5 +1,11 @@
 # Polygon Stocks App
 
+<br>
+
+![Polygon.io](./src/assets/polygon-logo.svg)
+
+<br>
+
 ## Vide Demo
 
 [See Demo Here](https://drive.google.com/file/d/1MwPta0Ou_n7OodQLi0T8LxUKFB4NEf6g/view?usp=sharing)
