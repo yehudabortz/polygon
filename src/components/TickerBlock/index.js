@@ -7,7 +7,7 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
   const Toggled = useContext(ToggleContext);
   const renders = useRef(1);
 
-  // When Toggled, component render count will increase
+  // When Toggled, component render count will increase, since data entering this component has changed.
   return (
     <>
       <TickerBlockWrap {...props}>
