@@ -35,8 +35,8 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
             </span>
           </FlexWithGap>
         </StandardColumnGridWrapper>
-        // Line 42 Render count is still higher than desired though!
         <RenderCountDisplay
+          // Line 42 Render count is still higher than desired though!
           className={Toggled ? "show-render-count" : "hide-render-count"}
         >
           Rendered x {renders.current++}
