@@ -12,25 +12,22 @@ export const App = () => {
   const handleToggle = () => {
     setShowRenderCount((prev) => !prev);
   };
+  const toggleLabel = "Ticker Component Render Count: ";
   return (
     <ToggleContext.Provider value={showRenderCount}>
-      <>
-        <NavBar />
-        <AppWrap className="App">
-          <SubNavWrap>
-            <PageTitle>Top Performing Stocks</PageTitle>
-            <StandardGridWrap className="grid-column">
-              <ToggleLabel>
-                {showRenderCount
-                  ? "Ticker Component Render Count: ON"
-                  : "Ticker Component Render Count: OFF"}
-              </ToggleLabel>
-              <Toggle onClick={handleToggle} toggled={showRenderCount} />
-            </StandardGridWrap>
-          </SubNavWrap>
-          <Home />
-        </AppWrap>
-      </>
+      <NavBar />
+      <AppWrap className="App">
+        <SubNavWrap>
+          <PageTitle>Top Performing Stocks</PageTitle>
+          <StandardGridWrap className="grid-column">
+            <ToggleLabel>
+              {showRenderCount ? `${toggleLabel} ON` : `${toggleLabel} OFF`}
+            </ToggleLabel>
+            <Toggle onClick={handleToggle} toggled={showRenderCount} />
+          </StandardGridWrap>
+        </SubNavWrap>
+        <Home />
+      </AppWrap>
     </ToggleContext.Provider>
   );
 };
