@@ -9,24 +9,22 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
 
   // When Toggled, component render count will increase, since data entering this component has changed.
   return (
-    <>
-      <TickerBlockWrap {...props}>
-        <StandardColumnGridWrapper className="half-gap">
-          <FlexWithGap>
-            <Ticker>{ticker.toUpperCase()}</Ticker>
-            <span>
-              <StockPrice>{price}</StockPrice>
-              <Currency> USD</Currency>
-            </span>
-          </FlexWithGap>
-        </StandardColumnGridWrapper>
-        <RenderCountDisplay
-          className={Toggled ? "show-render-count" : "hide-render-count"}
-        >
-          Rendered x {renders.current++}
-        </RenderCountDisplay>
-      </TickerBlockWrap>
-    </>
+    <TickerBlockWrap {...props}>
+      <StandardColumnGridWrapper className="half-gap">
+        <FlexWithGap>
+          <Ticker>{ticker.toUpperCase()}</Ticker>
+          <span>
+            <StockPrice>{price}</StockPrice>
+            <Currency> USD</Currency>
+          </span>
+        </FlexWithGap>
+      </StandardColumnGridWrapper>
+      <RenderCountDisplay
+        className={Toggled ? "show-render-count" : "hide-render-count"}
+      >
+        Rendered x {renders.current++}
+      </RenderCountDisplay>
+    </TickerBlockWrap>
   );
 });
 
