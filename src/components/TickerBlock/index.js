@@ -1,20 +1,13 @@
-import React, {
-  useRef,
-  useCallback,
-  useLayoutEffect,
-  useState,
-  memo,
-  useContext,
-} from "react";
+import React, { useRef, memo, useContext } from "react";
 import { StandardColumnGridWrapper, FlexWithGap } from "../wrappers/index";
 import styled from "@emotion/styled";
 import { ToggleContext } from "../../App";
 
 export const TickerBlock = memo(({ ticker, price, ...props }) => {
   const Toggled = useContext(ToggleContext);
-
   const renders = useRef(1);
 
+  // When Toggled, component render count will increase
   return (
     <>
       <TickerBlockWrap {...props}>
