@@ -1,7 +1,14 @@
-import React, { useLayoutEffect, useState, memo, useContext } from "react";
+import React, {
+  useRef,
+  useLayoutEffect,
+  useState,
+  memo,
+  useContext,
+} from "react";
 import { StandardColumnGridWrapper, FlexWithGap } from "../wrappers/index";
 import styled from "@emotion/styled";
 import { ToggleContext } from "../../App";
+
 export const TickerBlock = memo(({ ticker, price, ...props }) => {
   const [renderCount, setRenderCount] = useState(0);
 
@@ -13,6 +20,8 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
   }, [price]);
 
   const Toggled = useContext(ToggleContext);
+
+  const renders = useRef(0);
 
   return (
     <>
@@ -26,11 +35,11 @@ export const TickerBlock = memo(({ ticker, price, ...props }) => {
             </span>
           </FlexWithGap>
         </StandardColumnGridWrapper>
-
+        // Line 42 Render count is still higher than desired though!
         <RenderCountDisplay
           className={Toggled ? "show-render-count" : "hide-render-count"}
         >
-          Rendered x {renderCount}
+          Rendered x {renders.current++}
         </RenderCountDisplay>
       </TickerBlockWrap>
     </>
