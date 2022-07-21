@@ -47,6 +47,7 @@ export const Home = () => {
           if (price && ticker) {
             return <TickerBlock ticker={ticker} price={price} key={ticker} />;
           }
+          return <TickerBlock ticker={"LDNG"} price={0.0} key={"LDNG"} />;
         })}
       </TickerGrid>
     </PageWrap>
